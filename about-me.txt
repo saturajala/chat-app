@@ -1,0 +1,20 @@
+Hi! My name is Satu and I'm studying in Interactive Media studypath.
+
+This is currently my second time studying at a university of applied sciences. 
+I graduated as Bachelor of Business Information Systems in 2017 from JAMK.
+
+I have tried a little bit of everything: doing basic websites, doing graphics for websites, doing basic courses about back-end stuff,
+and even programming a web app using asp.net. BUT I remember very little about those times. Basically, in school I tried to do too much and 
+also become a fullstack developer in a very short amount of time but it was too much information in a too short timespan 
+so I kinda forgot everything.
+
+Now when I know a bit more about different job titles in IT fields, I'm hoping to become either UI/UX developer or front-end developer.
+Or something that connects IT and visual design.
+
+My other interests are drawing (and graphic designing) and video games (especially horror) and I hope that someday 
+I can be a part of a game project, maybe doing some 3D modeling.
+
+I'm still quite unsure what skills I should be learning to achieve my goals. There are so many different technologies nowadays that it makes
+it difficult to know where to start. I'm kinda overwhelmed even though I have been studying these before.
+
+I'm happy to be on this course and ready to learn a little bit more about these subjects!
