@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+input {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 50%;
+  background-color: rgb(76, 172, 175);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ul, li {
+  font-size: 16px;
+}
+
+h1 {
+  color: #0d2453;
+}
