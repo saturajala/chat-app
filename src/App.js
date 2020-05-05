@@ -2,6 +2,7 @@ import React from 'react';
 /* import logo from './logo.svg'; */
 import './App.css';
 import Chatbox from './components/Chatbox';
+import { Link } from 'react-router-dom';
 /* import Hello from './Hello'; */
 
 class App extends React.Component {
@@ -26,15 +27,27 @@ class App extends React.Component {
     });
   }
 
-  render(){
+  render() {
     return (
       <div className="App">
         <h1>Chat App</h1>
-        <Chatbox items={this.state.items} />
-        <form className="message-form" onSubmit={this.onSubmit}>
-          <input value={this.state.term} onChange={this.onChange}/>
-          <button>Send</button>
-        </form>
+
+        {this.props.user &&
+          <div className="allow-chat">
+            <Chatbox items={this.state.items} />
+            <form className="message-form" onSubmit={this.onSubmit}>
+              <input value={this.state.term} onChange={this.onChange} />
+              <button>Send</button>
+            </form>
+          </div>
+        }
+
+        {!this.props.user &&
+        <div className="disallow-chat">
+          <p><Link to="/login">Login</Link> or <Link to="/register">Register</Link> to start chatting!</p>
+        </div>
+        }
+
       </div>
     );
   }
