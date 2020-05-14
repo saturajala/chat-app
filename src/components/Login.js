@@ -45,8 +45,8 @@ class Login extends React.Component {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" name="password" id="password" value={password} onChange={this.handleChange} placeholder="Enter password"></Form.Control>
 
-                        <Button variant="primary" type="submit" className="submit mt-4">Login</Button>
-                        <p>Don't have an account? <Link className="login-btn" to="/register">Register here</Link>.</p>
+                        <Button variant="primary" type="submit" className="submit mt-4 login-and-register-btn">Login</Button>
+                        <p className="pt-3">Don't have an account? <Link className="login-btn" to="/register">Register here</Link>.</p>
                     </Form.Group>
                 </Form>
             </div>

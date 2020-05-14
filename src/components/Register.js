@@ -58,8 +58,8 @@
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" name="password" id="password" value={password} onChange={this.handleChange} placeholder="Enter a password"></Form.Control>
 
-                        <Button variant="primary" type="submit" className="submit mt-4">Get started!</Button>
-                        <p>Already have an account? <Link className="login-btn" to="/login">Login here</Link>.</p>
+                        <Button variant="primary" type="submit" className="submit mt-4 login-and-register-btn">Get started!</Button>
+                        <p className="pt-3">Already have an account? <Link className="login-btn" to="/login">Login here</Link>.</p>
                     </Form.Group>
                 </Form>
 

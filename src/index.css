@@ -44,4 +44,9 @@ code {
 
 .log-out-btn {
   width: auto;
+  border-color: #3A5973!important;
+}
+
+.log-out-btn:hover {
+  background-color: #3A5973!important;
 }

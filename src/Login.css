@@ -10,3 +10,12 @@
     padding: 6rem 10rem!important;
     border-radius: 3px;
 }
+
+.login-and-register-btn {
+    background-color: #3A5973!important;
+    border-color: rgb(41, 65, 85)!important;
+}
+
+.login-and-register-btn:hover {
+    background-color: rgb(72, 113, 146)!important;
+}

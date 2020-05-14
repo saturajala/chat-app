@@ -62,13 +62,10 @@ class App extends React.Component {
                 onChange={this.onChange} />
               <button>Send</button>
             </form> */}
-            <div style={{ float: "left", clear: "both" }}
-              ref={(el) => { this.messagesEnd = el; }}>
-            </div>
             <Form className="message-form" onSubmit={this.onSubmit}>
               <Form.Group>
                 <Form.Control type="text" name="message" id="message" value={this.state.message} onChange={this.onChange} />
-                <Button variant="primary" type="submit">Send</Button>
+                <Button variant="primary" className="send-btn" type="submit">Send</Button>
               </Form.Group>
             </Form>
 
