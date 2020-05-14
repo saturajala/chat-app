@@ -1,7 +1,7 @@
     import React from 'react';
     import firebase from '../firebase.js';
     import { Link } from 'react-router-dom';
-    import Login from './Login';
+    import { Form, Button } from 'react-bootstrap'
 
     class Register extends React.Component {
 
@@ -43,22 +43,26 @@
         render(){
             const {email, username, password, error} = this.state;
             return(
-                <div className="auth-container">
+                <div className="auth-container container mt-5 login-div">
                     <h1>Register your account</h1>
                     {error && <p className="error-message">{error.message}</p>}
-                    <form onSubmit={this.handleSubmit}>
-                        <label htmlFor="username">Username</label>
-                        <input type="text" name="username" id="username" value={username} onChange={this.handleChange}></input>
 
-                        <label htmlFor="email">Email Adress</label>
-                        <input type="text" name="email" id="email" value={email} onChange={this.handleChange}></input>
+                    <Form onSubmit={this.handleSubmit} className="mt-3 pt-3">
+                    <Form.Group>
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control type="text" name="username" id="username" value={username} onChange={this.handleChange} placeholder="Enter a username"></Form.Control>
 
-                        <label htmlFor="password">Choose a password</label>
-                        <input type="password" name="password" id="password" value={password} onChange={this.handleChange}></input>
-                        
-                        <button className="submit">Get started!</button>
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="email" name="email" id="email" value={email} onChange={this.handleChange} placeholder="Enter email"></Form.Control>
+
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" name="password" id="password" value={password} onChange={this.handleChange} placeholder="Enter a password"></Form.Control>
+
+                        <Button variant="primary" type="submit" className="submit mt-4">Get started!</Button>
                         <p>Already have an account? <Link className="login-btn" to="/login">Login here</Link>.</p>
-                    </form>
+                    </Form.Group>
+                </Form>
+
                 </div>
             );
         }

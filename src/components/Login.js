@@ -1,10 +1,12 @@
 import React from 'react';
 import firebase from '../firebase.js';
 import { Link } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
+import '../Login.css';
 
 class Login extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             email: '',
@@ -14,37 +16,39 @@ class Login extends React.Component {
     }
 
     handleChange = e => {
-        this.setState({[e.target.name]: e.target.value});
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     handleSubmit = e => {
         e.preventDefault();
-        const {email, password} = this.state;
+        const { email, password } = this.state;
         firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-            this.props.history('/push');
+            this.props.history.push('/');
         })
-        .catch(error => {
-            this.setState({error});
-        })
+            .catch(error => {
+                this.setState({ error });
+            })
     }
 
-    render(){
-        const {email, password, error} = this.state;
-        return(
-            <div className="auth-container">
+    render() {
+        const { email, password, error } = this.state;
+        return (
+            <div className="auth-container container mt-5 login-div">
                 <h1>Login</h1>
-                <p>Login to access your account</p>
+                <p className="pt-3">Login to access your account</p>
                 {error && <p className="error-message">{error.message}</p>}
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="email">Email address</label>
-                    <input type="text" name="email" id="email" value={email} onChange={this.handleChange}></input>
+                <Form onSubmit={this.handleSubmit} className="mt-3">
+                    <Form.Group>
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" name="email" id="email" value={email} onChange={this.handleChange} placeholder="Enter email"></Form.Control>
 
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password" value={password} onChange={this.handleChange}></input>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" name="password" id="password" value={password} onChange={this.handleChange} placeholder="Enter password"></Form.Control>
 
-                    <button className="submit">Login</button>
-                    <p>Don't have an account? <Link className="login-btn" to="/register">Register here</Link>.</p>
-                </form>
+                        <Button variant="primary" type="submit" className="submit mt-4">Login</Button>
+                        <p>Don't have an account? <Link className="login-btn" to="/register">Register here</Link>.</p>
+                    </Form.Group>
+                </Form>
             </div>
         );
     }

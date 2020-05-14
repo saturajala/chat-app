@@ -1,0 +1,48 @@
+.chatbox .chat-bubble {
+    background-color:#000000;
+    padding: 15px;
+    border-radius: 4px;
+    max-width: 60%;
+    word-wrap: break-word;
+    position: relative;
+    color: white;
+  }
+  
+  .chatbox .chat-bubble.current-user {
+    margin-left: auto;
+    background-color: #3A5973;
+    color: white;
+  }
+
+  .date {
+      font-size: .8rem;
+      color: #DDE5EB;
+      text-align: right;
+      /* margin-left: 7rem; */
+      white-space: nowrap;
+      position: absolute;
+      bottom: .7rem;
+      right: .7rem;
+  }
+
+.chatbox {
+    padding: 1rem;
+    position: relative;
+    height: 45vh;
+    overflow-y: scroll;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

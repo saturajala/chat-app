@@ -7,18 +7,21 @@ import Register from './components/Register';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import firebase, { auth, provider } from './firebase.js';
+import { Navbar, Nav, Button, Form,
+ } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class AppRouter extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {user: null}
+    this.state = { user: null }
   }
 
   componentDidMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
-        this.setState({user});
+        this.setState({ user });
       }
     })
   }
@@ -32,20 +35,29 @@ class AppRouter extends React.Component {
       <Router>
         <div className="app">
 
-          <nav className="main-nav">
+
+
             {!this.state.user &&
-              <div>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
-              </div>
+              <Navbar variant="dark" defaultActiveKey="/">
+                <Navbar.Brand as={Link} to="/">Chat App</Navbar.Brand>
+                <Nav className="mr-auto">
+                  <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                  <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                </Nav>
+              </Navbar>
             }
             {this.state.user &&
-              <a href="#!" onClick={this.logOutUser}>Log Out</a>
+              /* <a href="#!" onClick={this.logOutUser}>Log Out</a> */
+              <Navbar variant="dark">
+                <Navbar.Brand as={Link} to="/">Chat App</Navbar.Brand>
+                <Nav className="mr-auto">
+                </Nav>
+                  <Form><Button variant="outline-info" className="log-out-btn" onClick={this.logOutUser}>Log Out</Button></Form> 
+              </Navbar>
             }
-          </nav>
 
           <Switch>
-            <Route path="/" exact render={() => <App user={this.state.user}/>} />
+            <Route path="/" exact render={() => <App user={this.state.user} />} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
           </Switch>

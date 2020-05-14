@@ -1,15 +1,19 @@
 import React from 'react';
 import firebase from '../firebase';
+import '../Chatbox.css';
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 class Chatbox extends React.Component {
     constructor(props) {
         super(props);
+        this.myRef = React.createRef();
         this.state = {
             chats: []
         }
     }
 
     componentDidMount() {
+
         const chatRef = firebase.database().ref('general');
         chatRef.on('value', snapshot => {
             const getChats = snapshot.val();
@@ -20,31 +24,61 @@ class Chatbox extends React.Component {
                         id: chat,
                         message: getChats[chat].message,
                         user: getChats[chat].user,
-                        date: getChats[chat].timestamp
+                        date: getChats[chat].timestamp,
+                        email: getChats[chat].email
                     });
                 }
             }
-            const chats = ascChats.reverse();
+            const chats = ascChats;
             this.setState({ chats });
         });
     }
 
     render() {
         return (
+            /*             <div className="chatbox">
+                            <ul className="chat-list">
+                                {this.state.chats.map(chat => {
+                                    const postDate = new Date(chat.date);
+                                    return (
+                                        <li key={chat.id}>
+                                            <em>{postDate.getDate() + '/' + (postDate.getMonth() + 1)}</em>
+                                            <strong>{chat.user}:</strong>
+                                            {chat.message}
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div> */
             <div className="chatbox">
-                <ul className="chat-list">
-                    {this.state.chats.map(chat => {
-                        const postDate = new Date(chat.date);
-                        return (
-                            <li key={chat.id}>
-                                <em>{postDate.getDate() + '/' + (postDate.getMonth() + 1)}</em>
-                                <strong>{chat.user}:</strong>
-                                {chat.message}
-                            </li>
-                        )
-                    })}
-                </ul>
+
+                {this.state.chats.map(chat => {
+                    const postDate = new Date(chat.date);
+                    const thisUser = firebase.auth().currentUser;
+                    return (
+                        <p key={chat.id} className={"chat-bubble " + (thisUser.email === chat.email ? "current-user" : "")}>
+                            <strong>{chat.user}: </strong>
+                            {chat.message}
+                            <em className="date">{postDate.getDate() + '/' + (postDate.getMonth() + 1)}</em>
+                            <ScrollToBottom><div style={{ float: "left", clear: "both" }}
+                                ref={(el) => { this.messagesEnd = el; }}>
+                            </div></ScrollToBottom>
+                        </p>
+
+                    )
+                })}
+
+                {/*             {this.state.chats.map(chat => {
+            return <p key={chat.timestamp} className={"chat-bubble " + (this.state.user.uid === chat.uid ? "current-user" : "")}>
+              {chat.content}
+              <br />
+              <span className="chat-time float-right">{this.formatTime(chat.timestamp)}</span>
+            </p>
+          })} */}
+
+
             </div>
+
         );
     }
 }
