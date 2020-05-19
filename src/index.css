@@ -7,7 +7,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #000000;
-  width: auto;
+  width: 100%;
   min-height: 100vh;
   color: white;
   background-image: url('low-poly-background-gray.png');
@@ -21,6 +21,7 @@ code {
 }
 
 .navbar {
+  width: auto;
   background-color:#222222;
   padding: 1rem 8rem!important;
 }
@@ -50,3 +51,24 @@ code {
 .log-out-btn:hover {
   background-color: #3A5973!important;
 }
+
+
+@media screen and (max-width: 600px) {
+    
+  .navbar-brand {
+    font-size: 1.3rem !important;
+  }
+
+  .navbar a {
+    padding: .8rem 0;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  .navbar-toggler {
+    min-width: 3em !important;
+  }
+
+  }

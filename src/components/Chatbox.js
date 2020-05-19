@@ -72,6 +72,7 @@ class Chatbox extends React.Component {
                             <p key={chat.id} className={"chat-bubble " + (thisUser.email === chat.email ? "current-user" : "")}>
                                 <strong>{chat.user}: </strong>
                                 {chat.message}
+                                <p></p>
                                 <em className="date">{postDate.getDate() + '/' + (postDate.getMonth() + 1)}</em>
                                 <div style={{ float: "left", clear: "both" }}
                                     ref={(elem) => { this.messagesEnd = elem; }}>

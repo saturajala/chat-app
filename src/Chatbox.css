@@ -1,6 +1,6 @@
 .chatbox .chat-bubble {
     background-color:#000000;
-    padding: 15px;
+    padding: 10px;
     border-radius: 4px;
     max-width: 60%;
     word-wrap: break-word;
@@ -28,7 +28,7 @@
 .chatbox {
     padding: 1rem;
     position: relative;
-    height: 45vh;
+    height: 50vh;
     overflow-y: scroll;
 }
 
@@ -45,4 +45,27 @@
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
+  }
+
+  @media screen and (max-width: 600px) {
+
+    button {
+      font-size: small;
+      width: 30%;
+    }
+  
+    .chatbox {
+      padding: 0 !important;
+      font-size: small;
+    }
+
+    .date {
+      font-size: .4rem !important;
+    }
+
+    .chatbox .chat-bubble {
+      max-width: 85%;
+      word-wrap: break-word;
+    }
+  
   }

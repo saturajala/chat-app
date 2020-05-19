@@ -7,8 +7,9 @@ import Register from './components/Register';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import firebase, { auth, provider } from './firebase.js';
-import { Navbar, Nav, Button, Form,
- } from 'react-bootstrap';
+import {
+  Navbar, Nav, Button, Form, Container
+} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class AppRouter extends React.Component {
@@ -35,26 +36,30 @@ class AppRouter extends React.Component {
       <Router>
         <div className="app">
 
-
-
-            {!this.state.user &&
-              <Navbar variant="dark" defaultActiveKey="/">
-                <Navbar.Brand as={Link} to="/">Chat App</Navbar.Brand>
+          {!this.state.user &&
+            <Navbar collapseOnSelect expand="lg" variant="dark" defaultActiveKey="/">
+              <Navbar.Brand as={Link} to="/">Chat App</Navbar.Brand>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
                   <Nav.Link as={Link} to="/login">Login</Nav.Link>
                   <Nav.Link as={Link} to="/register">Register</Nav.Link>
                 </Nav>
-              </Navbar>
-            }
-            {this.state.user &&
-              /* <a href="#!" onClick={this.logOutUser}>Log Out</a> */
-              <Navbar variant="dark">
-                <Navbar.Brand as={Link} to="/">Chat App</Navbar.Brand>
+              </Navbar.Collapse>
+            </Navbar>
+          }
+
+          {this.state.user &&
+            <Navbar collapseOnSelect expand="lg" variant="dark">
+              <Navbar.Brand as={Link} to="/">Chat App</Navbar.Brand>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
                 </Nav>
-                  <Form><Button variant="outline-info" className="log-out-btn" onClick={this.logOutUser}>Log Out</Button></Form> 
-              </Navbar>
-            }
+                <Form><Button variant="outline-info" className="log-out-btn" onClick={this.logOutUser}>Log Out</Button></Form>
+              </Navbar.Collapse>
+            </Navbar>
+          }
 
           <Switch>
             <Route path="/" exact render={() => <App user={this.state.user} />} />
